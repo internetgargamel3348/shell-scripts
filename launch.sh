@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+# Tested only with two monitors, possible error in case of using more than that
+
 # Terminate already running bar instances
 killall -q polybar
 
@@ -7,7 +9,7 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # Launch
-#polybar top &
+#polybar named top
 for m in $(polybar --list-monitors | cut -d":" -f1); do
     MONITOR=$m polybar --reload top&
 done
